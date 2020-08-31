@@ -1,0 +1,76 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<!-- testng xml is a file which holds configurations for our test test suites -->
+<!-- test configs -->
+<!-- configuration - settings -->
+<!-- same code(app) should be able to run in different servers connecting to different databases -->
+<!-- in selenium we will write one code(framework) which should an easy way for to tell it to
+run on chrome or firefox based on a config-->
+<!--browser = firefox-->
+<!-- config file types:
+.xml
+.properties
+.json
+.ini
+.yaml
+.csv  -->
+<!--{ } -->
+<!-- First word right after "<" is called a tag -->
+<!-- following things are attributes ex: name="Suite 1" -->
+<!-- attributes are similar to java parameters. -->
+<!-- tags have their own certain format. Rule like test tag can only exists inside suite tag. -->
+<!-- suite is a test suite name - ex: Smoke, Regression -->
+<suite name="Smoke">
+    <parameter name="browser" value="chrome"></parameter>
+    <!-- Test name in the suite - ex:Cart, Checkout, Login, FrontEnd -->
+    <test name="FrontEnd">
+        <!-- Params -->
+        <!-- name is like a variable -->
+        <!-- value is the value of the variable-->
+        <parameter name="userName" value="johnDoe"></parameter>
+        <parameter name="password" value="hardPass"></parameter>
+        <parameter name="quantity" value="4"></parameter>
+        <parameter name="price" value="20.99"></parameter>
+        <parameter name="isPrime" value="true"></parameter>
+        <parameter name="env" value="qa"></parameter>
+
+        <!-- choosing which groups of test should be run in this test -->
+        <groups>
+            <!-- define a new group which will consist of other groups -->
+            <!-- group can also be called a tag -->
+            <define name="smokeAndCheckout">
+                <include name="smoke"></include>
+                <include name="checkout"></include>
+                <include name="regression"></include>
+            </define>
+            <!--            <run>-->
+            <!--                &lt;!&ndash; provide the group that needs to be run &ndash;&gt;-->
+            <!--                <include name="smoke"></include>-->
+            <!--                <include name="checkout"></include>-->
+            <!--            </run>-->
+            <!--            <run>-->
+            <!--                <include name="smokeAndCheckout"></include>-->
+            <!--            </run>-->
+        </groups>
+        <!-- classes declaring what test classes will be included, list out all test classes that should be run-->
+        <classes>
+            <!-- give the full package and className -->
+            <!-- declaring which classes should be scanned for tests -->
+            <!--            <class name="tests.testng.TestNGdemo1"></class>-->
+            <!--            <class name="tests.testng.TestNGDemo2"></class>-->
+            <!--            <class name="tests.testng.TestNGGroupsDemo"></class>-->
+            <!--            <class name="tests.testng.TestNGDependsOnDemo"></class>-->
+            <class name="tests.testng.Parameterization"></class>
+            <class name="tests.testng.DataProviders"></class>
+        </classes>
+    </test>
+</suite>
+        <!-- XSD is used to define the structure of xml file-->
+        <!-- In order to accomplish one submission for any transaction there are multiple small applications perform
+        certain and specific task and forwarding messaging ahead to each other -->
+        <!-- Xml files should be used as a final runner where we choose which tests among our many test cases
+        we should run at given moment.(task - smoke, regression) -->
+
+
+
+
